@@ -1,1 +1,1 @@
-# react-js
+# React js courses
