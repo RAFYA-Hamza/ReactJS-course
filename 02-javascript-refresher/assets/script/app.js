@@ -120,3 +120,42 @@ const extendedUser = {
   ...user,
 };
 console.log(extendedUser);
+/*---------------------------------------------------------------------------*/
+
+/*
+    -> Control Structers
+*/
+
+const password = prompt("Your password");
+
+if (password === "Hello") {
+  console.log("Hello works");
+} else if (password === "hello") {
+  console.log("hello works");
+} else {
+  console.log("Access not granted.");
+}
+
+for (const hobby of hobbies) {
+  console.log(hobby);
+}
+
+function handleTimeout() {
+  console.log("Timed out!");
+}
+
+const handleTimeout2 = () => {
+  console.log("Timed out ... again!");
+};
+
+setTimeout(handleTimeout, 1000);
+setTimeout(handleTimeout2, 3000);
+setTimeout(() => {
+  console.log("More timing out...");
+}, 5000);
+
+function greeter(greeterFn) {
+  greeterFn();
+}
+
+greeter(() => console.log("Passed function"));
