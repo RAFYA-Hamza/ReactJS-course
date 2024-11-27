@@ -102,7 +102,7 @@ Folder: `02-javascript-refresher`</br>
      ```
 
 - *Event Handling*:
-    * Pass functions as props to handle events:
+    * Pass functions as `props` to handle events:
     ```JSX
     function MyButton({ onClick }) {
       return <button onClick={onClick}>Click Me</button>;
@@ -120,7 +120,7 @@ Folder: `02-javascript-refresher`</br>
     <MyButton onClick={() => greet("Alice")} />;
     ```
 - *State Management*:
-    * Manage state with the useState hook:
+    * Manage state with the `useState` hook:
     ```JSX
     import React, { useState } from "react";
     
