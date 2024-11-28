@@ -35,7 +35,9 @@ This repository is divided into sections, each corresponding to a major concept 
 
 Folder: `02-javascript-refresher`</br>
 
-### **03. 
+---
+
+### **03. React Essentials: Components, JSX, Props, State & More
 **What I Learned:**
 
 - *Introduction to Components*:
@@ -201,6 +203,8 @@ Folder: `02-javascript-refresher`</br>
     // Usage:
     <Button />; // Outputs: Default
     ```
+
+    Folder: `03-react-essentials`</br>
 
 
 
