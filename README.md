@@ -37,7 +37,7 @@ Folder: `02-javascript-refresher`</br>
 
 ---
 
-### **03. React Essentials: Components, JSX, Props, State & More
+### **03. React Essentials: Components, JSX, Props, State & More**
 **What I Learned:**
 
 - *Introduction to Components*:
