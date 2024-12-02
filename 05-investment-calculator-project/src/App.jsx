@@ -1,6 +1,8 @@
+import { useState } from "react";
+
 import Header from "./components/Header.jsx";
 import UserInput from "./components/UserInput.jsx";
-import { useState } from "react";
+import Results from "./components/Results.jsx";
 
 function App() {
   const [userInput, setUserInput] = useState({
@@ -14,7 +16,7 @@ function App() {
     setUserInput((prevInput) => {
       return {
         ...prevInput,
-        [inputIdentifier]: newValue,
+        [inputIdentifier]: +newValue,
       };
     });
   }
@@ -23,6 +25,7 @@ function App() {
     <>
       <Header />
       <UserInput onChangeInput={handleChange} userInput={userInput} />
+      <Results input={userInput} />
     </>
   );
 }

@@ -40,7 +40,7 @@ export default function UserInput({ onChangeInput, userInput }) {
         <p>
           <label htmlFor="">Duration</label>
           <input
-            value={userInput.annualInvestment}
+            value={userInput.duration}
             onChange={(event) => {
               onChangeInput("duration", event.target.value);
             }}
