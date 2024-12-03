@@ -25,11 +25,12 @@ header h1 {
   margin: 0;
 }
 
-header p {
+/* see the Header component contain the inline style for this paragraph */
+/* header p {
   text-align: center;
   color: #a39191;
   margin: 0;
-}
+} */
 
 @media (min-width: 768px) {
   header {
