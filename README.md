@@ -206,6 +206,106 @@ Folder: `02-javascript-refresher`</br>
 
     Folder: `03-react-essentials`</br>
 
+    ---
+
+### **06. Styling React components**
+**What I Learned:**
+
+- *Splitting CSS Code Across Multiple Files*:
+    * Organized styling by separating CSS into multiple files for scalability and better readability.
+    ```CSS
+       /* Header.css */
+    .header {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    ```
+    ```JSX
+    import './Header.css';
+
+    function Header() {
+      return <div className="header">Welcome to My App</div>;
+    }
+    ```
+- *Styling React Apps with Inline Styles*:
+    * Quick and dynamic but harder to maintain for large projects.
+    ```JSX
+    const buttonStyle = {
+      backgroundColor: "blue",
+      color: "white",
+      padding: "0.5rem 1rem",
+    };
+    
+    function Button() {
+      return <button style={buttonStyle}>Click Me</button>;
+    }
+    ```
+
+- *Dynamic & Conditional Styling with CSS Files & CSS Classes*:
+    * Changing styles dynamically based on props or state.
+    ```JSX
+    function Button({ isPrimary }) {
+      return (
+        <button className={isPrimary ? "btn-primary" : "btn-secondary"}>
+          Click Me
+        </button>
+      );
+    }
+    ```
+
+- *Scoping CSS Rules with CSS Modules*:
+    * CSS Modules ensure styles are scoped to components.
+    ```CSS
+        /* Button.module.css */
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 0.5rem 1rem;
+    }
+
+    ```
+    ```JSX
+    import styles from './Button.module.css';
+    
+    function Button() {
+      return <button className={styles.btn}>Click Me</button>;
+    }
+    ```
+- *Introducing "Styled Components" (Third-party Package)*:
+    * Write CSS-in-JS for component-scoped styling.
+    ```JSX
+    import styled from "styled-components";
+    
+    const Button = styled.button`
+      background-color: blue;
+      color: white;
+      padding: 0.5rem 1rem;
+    `;
+    
+    function App() {
+      return <Button>Click Me</Button>;
+    }
+    ```
+
+- *Introducing Tailwind CSS For React App Styling*:
+    * Utility-first framework that simplifies styling with pre-defined classes.
+    ```JSX
+    function Button() {
+      return <button className="bg-blue-500 text-white py-2 px-4">Click Me</button>;
+    }
+    ```
+- *Tailwind: Media Queries & Pseudo Selectors*:
+    * Responsive design with utility classes.
+    ```JSX
+    <button className="bg-blue-500 hover:bg-blue-700 sm:bg-green-500">
+      Click Me
+    </button>
+    ```
+
+    
+
 
 
 
