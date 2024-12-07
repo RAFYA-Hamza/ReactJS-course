@@ -1,4 +1,5 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
+import { createPortal } from "react-dom";
 
 // we can pass a Ref in last version of react like a prop
 // so we don't need to use the forwardRef function
@@ -17,7 +18,7 @@ const ResultModal = forwardRef(function ResultModal(
       },
     };
   });
-  return (
+  return createPortal(
     <dialog ref={dialog} className="result-modal">
       <h2>
         {remainingTime < targetTime ? "You lost" : `Your score: ${score}`}
@@ -32,7 +33,8 @@ const ResultModal = forwardRef(function ResultModal(
       <form method="dialog" onSubmit={onReset}>
         <button className="">Close</button>
       </form>
-    </dialog>
+    </dialog>,
+    document.getElementById("modal")
   );
 });
 
