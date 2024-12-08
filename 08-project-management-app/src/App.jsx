@@ -4,16 +4,31 @@ import SideBar from "./components/SideBar";
 import { useState } from "react";
 
 function App() {
-  const [newProject, setNewProject] = useState(false);
+  const [projectState, setProjectState] = useState({
+    selectedProjectId: "no-project",
+    projects: [],
+  });
+  let content;
 
-  function handleClick() {
-    setNewProject(true);
+  function handleStartAddProject() {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: "existing-projects",
+      };
+    });
+  }
+
+  if (projectState.selectedProjectId === "existing-projects") {
+    content = <NewProject />;
+  } else if (projectState.selectedProjectId === "no-project") {
+    content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar onSelect={handleClick} />
-      {newProject ? <NewProject /> : <NoProjectSelected />}
+      <SideBar onStartAddProject={handleStartAddProject} />
+      {content}
     </main>
   );
 }
