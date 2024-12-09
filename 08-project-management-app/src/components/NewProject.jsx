@@ -16,13 +16,14 @@ export default function NewProject({ onAddProject, onCancel }) {
     const enteredDueDate = dueDate.current.value;
 
     if (
-      enteredTitle === undefined ||
-      enteredDescription === undefined ||
-      enteredDueDate === undefined
+      enteredTitle.trim() === "" ||
+      enteredDescription.trim() === "" ||
+      enteredDueDate.trim() === ""
     ) {
       modal.current.open();
       return;
     }
+
     onAddProject({
       title: enteredTitle,
       description: enteredDescription,
