@@ -18,7 +18,7 @@ This repository is divided into sections, each corresponding to a major concept 
 ---
 
 ## Sections
-### **02. Javascript Refresher**
+### **1. Javascript Refresher**
 **What I Learned:** 
 
 - *Control Structures and Loops*:</br>
@@ -37,7 +37,7 @@ Folder: `02-javascript-refresher`</br>
 
 ---
 
-### **03. React Essentials: Components, JSX, Props, State & More**
+### **2. React Essentials: Components, JSX, Props, State & More**
 **What I Learned:**
 
 - *Introduction to Components*:
@@ -208,7 +208,7 @@ Folder: `02-javascript-refresher`</br>
 
     ---
 
-### **06. Styling React components**
+### **3. Styling React components**
 **What I Learned:**
 
 - *Splitting CSS Code Across Multiple Files*:
@@ -304,7 +304,188 @@ Folder: `02-javascript-refresher`</br>
     </button>
     ```
 
+
+ Folder: `06-styling-react-components`</br>
+
+    ---
+
+
+### **4. Working with Refs & Portals**
+**What I Learned:**
+
+
+
+
+- *Accessing DOM Elements with Refs*:
+    * Refs are used to directly access and manipulate DOM elements.
+    * Use `React.createRef()` or the `useRef` hook in functional components.
+    * Ideal for focusing inputs, measuring DOM nodes, or triggering animations.
+
+    ```JSX
+    import React, { useRef } from "react";
     
+    function FocusInput() {
+      const inputRef = useRef();
+    
+      const handleFocus = () => {
+        inputRef.current.focus(); // Directly access the input DOM element
+      };
+    
+      return (
+        <div>
+          <input ref={inputRef} type="text" placeholder="Click the button to focus me!" />
+          <button onClick={handleFocus}>Focus Input</button>
+        </div>
+      );
+    }
+    
+    export default FocusInput;
+    ```
+    
+- *Managing Values with Refs*:
+    * Refs can store mutable values that persist across renders without causing re-renders.
+    * Useful for managing data like timers or previous values.
+    ```JSX
+    import React, { useRef, useState } from "react";
+    
+    function Timer() {
+      const timerRef = useRef(null);
+      const [count, setCount] = useState(0);
+    
+      const startTimer = () => {
+        if (!timerRef.current) {
+          timerRef.current = setInterval(() => setCount((prev) => prev + 1), 1000);
+        }
+      };
+    
+      const stopTimer = () => {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      };
+    
+      return (
+        <div>
+          <h1>Timer: {count}</h1>
+          <button onClick={startTimer}>Start</button>
+          <button onClick={stopTimer}>Stop</button>
+        </div>
+      );
+    }
+    
+    export default Timer;
+
+    ```
+
+- *Exposing API Functions from Components*:
+    * `useImperativeHandle` (used with `forwardRef`) allows you to expose specific methods or properties of a component to parent components.
+    * Helps create controlled APIs while keeping the internal logic encapsulated.
+    ```JSX
+    import React, { useRef, forwardRef, useImperativeHandle } from "react";
+
+    const CustomInput = forwardRef((props, ref) => {
+      const inputRef = useRef();
+    
+      useImperativeHandle(ref, () => ({
+        focus: () => {
+          inputRef.current.focus();
+        },
+        clear: () => {
+          inputRef.current.value = "";
+        },
+      }));
+    
+      return <input ref={inputRef} type="text" placeholder="Controlled input" />;
+    });
+    
+    function App() {
+      const inputRef = useRef();
+    
+      return (
+        <div>
+          <CustomInput ref={inputRef} />
+          <button onClick={() => inputRef.current.focus()}>Focus</button>
+          <button onClick={() => inputRef.current.clear()}>Clear</button>
+        </div>
+      );
+    }
+    
+    export default App;
+
+    ```
+
+- *Detaching DOM Rendering from JSX Structure with Portals*:
+    * Portals allow you to render components outside of the parent DOM hierarchy.
+    * Useful for modals, tooltips, or any UI elements that need to escape CSS or DOM constraints.
+    ```JSX
+    import React from "react";
+    import ReactDOM from "react-dom";
+    
+    function Modal({ isOpen, onClose, children }) {
+      if (!isOpen) return null;
+    
+      return ReactDOM.createPortal(
+        <div style={modalStyles}>
+          <div style={contentStyles}>
+            {children}
+            <button onClick={onClose}>Close</button>
+          </div>
+        </div>,
+        document.getElementById("modal-root")
+      );
+    }
+    
+    const modalStyles = {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.5)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+    
+    const contentStyles = {
+      backgroundColor: "white",
+      padding: "20px",
+      borderRadius: "5px",
+    };
+    
+    export default function App() {
+      const [isOpen, setIsOpen] = React.useState(false);
+    
+      return (
+        <div>
+          <h1>React Portals Example</h1>
+          <button onClick={() => setIsOpen(true)}>Open Modal</button>
+          <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <h2>Modal Content</h2>
+          </Modal>
+        </div>
+      );
+    }
+
+    ```
+    HTML Setup for Portals:
+    ```html
+    html
+    Copier le code
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>React Portal</title>
+      </head>
+      <body>
+        <div id="root"></div>
+        <div id="modal-root"></div>
+      </body>
+    </html>
+    ```
+
+ Folder: `07-working-with-refs-portals`</br>
+
+    ---
 
 
 
