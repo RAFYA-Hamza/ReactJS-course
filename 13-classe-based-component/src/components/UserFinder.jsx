@@ -3,6 +3,7 @@ import { Fragment, useState, useEffect } from "react";
 import Users from "./Users";
 import classes from "./UserFinder.module.css";
 import { Component } from "react";
+import { UsersContext } from "../store/user-context";
 
 const DUMMY_USERS = [
   { id: "u1", name: "Max" },
@@ -11,27 +12,31 @@ const DUMMY_USERS = [
 ];
 
 class UserFinder extends Component {
+  static contextType = UsersContext;
+
   constructor() {
     super();
 
     this.state = {
-      filteredUsers: DUMMY_USERS,
+      filteredUsers: [],
       searchTerm: "",
     };
   }
 
   // This method execute once time, when we start the execution of the component
   componentDidMount() {
-    console.log("componentDidMount");
     // Send http request...
     // do something
+    this.setState({
+      filteredUsers: this.context.users,
+    });
   }
 
   // This method execute every changes in the state or the rendering of component
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
-        filteredUsers: DUMMY_USERS.filter((user) =>
+        filteredUsers: this.context.users.filter((user) =>
           user.name.includes(this.state.searchTerm)
         ),
       });
