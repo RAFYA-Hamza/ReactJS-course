@@ -7,6 +7,7 @@ import { log } from "./log.js";
 import ConfigureCounter from "./components/ConfigureCounter.jsx";
 
 function App() {
+  console.log("Before the fcuntion that we have");
   log("<App /> rendered");
 
   const [chosenCount, setChosenCount] = useState(0);
@@ -14,6 +15,8 @@ function App() {
   function handleSetCounter(newCounter) {
     setChosenCount(newCounter);
   }
+
+  console.log("After curly braces");
 
   return (
     <>
