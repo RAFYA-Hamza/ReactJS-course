@@ -10,9 +10,9 @@ export function useFetch(fetchFn, initialValue) {
       setIsFetching(true);
 
       try {
-        const places = await fetchFn();
+        const data = await fetchFn();
 
-        setFetchDate(places);
+        setFetchDate(data);
       } catch (error) {
         setError({
           message:
