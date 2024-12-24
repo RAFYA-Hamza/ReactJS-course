@@ -1,12 +1,17 @@
-import { useActionState } from "react";
+import { useContext, useActionState } from "react";
+
+import { OpinionsContext } from "../store/opinions-context";
+
+import { Submit } from "./Submit";
 
 export function NewOpinion() {
+  const { addOpinion } = useContext(OpinionsContext);
+
   const [formState, formAction] = useActionState(shareOpinionAction, {
     errors: null,
   });
 
-  function shareOpinionAction(prevState, formData) {
-    console.log(prevState);
+  async function shareOpinionAction(prevState, formData) {
     const userName = formData.get("userName");
     const title = formData.get("title");
     const body = formData.get("body");
@@ -35,6 +40,10 @@ export function NewOpinion() {
         },
       };
     }
+
+    await addOpinion({ userName, title, body });
+
+    console.log("Opinion sent to the backend");
 
     return {
       errors: null,
@@ -84,9 +93,7 @@ export function NewOpinion() {
           </ul>
         )}
 
-        <p className="actions">
-          <button type="submit">Submit</button>
-        </p>
+        <Submit />
       </form>
     </div>
   );
