@@ -23,7 +23,6 @@ export const loader = async () => {
     // return json({ message: "Could not fetch events." }, { status: 500 });
   } else {
     // const resData = await response.json();
-    console.log(response.events);
     return response;
   }
 };
