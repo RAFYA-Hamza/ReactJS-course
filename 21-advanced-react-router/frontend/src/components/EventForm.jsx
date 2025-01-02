@@ -9,6 +9,7 @@ function EventForm({ method, event }) {
   }
 
   return (
+    // we can add the {action="/any-other-path"} to triger the action other path
     <Form method="post" className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
