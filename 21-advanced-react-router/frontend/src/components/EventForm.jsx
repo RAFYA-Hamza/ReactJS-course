@@ -1,8 +1,17 @@
-import { Form, useNavigate } from "react-router-dom";
+import {
+  Form,
+  useNavigate,
+  useNavigation,
+  useActionData,
+} from "react-router-dom";
 
 import classes from "./EventForm.module.css";
 
 function EventForm({ method, event }) {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submiting";
+  const data = useActionData();
+
   const navigate = useNavigate();
   function cancelHandler() {
     navigate("..");
@@ -11,6 +20,13 @@ function EventForm({ method, event }) {
   return (
     // we can add the {action="/any-other-path"} to triger the action other path
     <Form method="post" className={classes.form}>
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
       <p>
         <label htmlFor="title">Title</label>
         <input
@@ -55,7 +71,9 @@ function EventForm({ method, event }) {
         <button type="button" onClick={cancelHandler}>
           Cancel
         </button>
-        <button type="submit">Save</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Submiting..." : "Save"}
+        </button>
       </div>
     </Form>
   );
