@@ -1,5 +1,5 @@
 import classes from "./PageContent.module.css";
-import MainNavigation from "../components/MainNavigation";
+import MainNavigation from "./MainNavigation";
 
 function PageContent({ title, children }) {
   return (
