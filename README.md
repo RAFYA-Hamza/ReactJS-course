@@ -12,7 +12,6 @@ This repository is divided into sections, each corresponding to a major concept 
 - A summary of the topic </br>
 - Key points and takeaways </br>
 - Code examples and exercises </br>
-
 ---
 
 ## Sections
