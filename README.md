@@ -31,7 +31,6 @@ This repository is divided into sections, each corresponding to a major concept 
 
 Folder: `02-javascript-refresher`</br>
 ---
-
 ### **2. React Essentials: Components, JSX, Props, State & More**
 **What I Learned:**
 
