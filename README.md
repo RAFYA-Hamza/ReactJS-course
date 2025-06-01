@@ -5,7 +5,6 @@ Welcome to my React.js learning journey! 🚀</br>
 This repository is a collection of all the concepts, examples, and exercises I have learned while exploring React.js. It is intended to track my progress, organize my knowledge, and serve as a reference for future projects.
 
 Feel free to explore, contribute, or suggest improvements!
-
 ---
 
 ## Overview
