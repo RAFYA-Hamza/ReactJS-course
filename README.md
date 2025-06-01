@@ -6,7 +6,6 @@ This repository is a collection of all the concepts, examples, and exercises I h
 
 Feel free to explore, contribute, or suggest improvements!
 ---
-
 ## Overview
 This repository is divided into sections, each corresponding to a major concept or topic in React.js. For each section, you will find:
 
