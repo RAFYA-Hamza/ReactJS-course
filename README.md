@@ -30,7 +30,6 @@ This repository is divided into sections, each corresponding to a major concept 
    Learn how to organize and modularize your JavaScript code using `import` and `export`.
 
 Folder: `02-javascript-refresher`</br>
-
 ---
 
 ### **2. React Essentials: Components, JSX, Props, State & More**
