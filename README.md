@@ -13,7 +13,6 @@ This repository is divided into sections, each corresponding to a major concept 
 - Key points and takeaways </br>
 - Code examples and exercises </br>
 ---
-
 ## Sections
 ### **1. Javascript Refresher**
 **What I Learned:** 
